@@ -15,6 +15,7 @@ namespace DziennikLekcyjny
         {
             InitializeComponent();
 			//
+			// 2 chrupki
         }
     }
 }
