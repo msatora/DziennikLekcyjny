@@ -12,3 +12,5 @@ Ziemowit Stolarczyk.
 
 
 asdasdasdasdasda
+
+nowa zmiana
