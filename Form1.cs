@@ -15,6 +15,7 @@ namespace DziennikLekcyjny
         {
             InitializeComponent();
 			//
+			//mamaitata
         }
     }
 }
