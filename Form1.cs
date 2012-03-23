@@ -14,6 +14,7 @@ namespace DziennikLekcyjny
         public Form1()
         {
             InitializeComponent();
+			//
         }
     }
 }
