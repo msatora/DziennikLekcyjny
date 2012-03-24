@@ -1,3 +1,4 @@
 ## Files which will be ignore
-*.gitignore
-*.txt
+*.cache
+[Bb]in/
+[Oo]bj/
