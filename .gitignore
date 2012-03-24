@@ -2,3 +2,5 @@
 *.cache
 [Bb]in/
 [Oo]bj/
+*.htaccess
+web/.idea/
