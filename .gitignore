@@ -1,0 +1,6 @@
+## Files which will be ignore
+*.cache
+[Bb]in/
+[Oo]bj/
+*.htaccess
+web/.idea/
