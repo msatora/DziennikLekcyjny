@@ -21,6 +21,7 @@ namespace DziennikLekcyjny
             textBox1.Text = Properties.Settings.Default.Uzytkownik;
             textBox3.Text = Properties.Settings.Default.AdresSerwera;
             textBox4.Text = Properties.Settings.Default.Port;
+            textBox5.Text = Properties.Settings.Default.NazwaBazy;
         }
 
         //**********************************************************************************
@@ -29,9 +30,16 @@ namespace DziennikLekcyjny
         {
             if (SprawdzPoprawnoscDanych())
             {
-                m_Logger = new Logger(textBox3.Text, textBox2.Text, textBox1.Text, uint.Parse(textBox4.Text));
+                m_Logger = new Logger(textBox3.Text, textBox5.Text, textBox2.Text, textBox1.Text, uint.Parse(textBox4.Text), GetPracownik());
                 if (false == m_Logger.Loguj())
+                {
+                    MessageBox.Show("Połączenie z bazą - nie powiodło się.", "Błąd");
                     return;
+                }
+                else
+                {
+
+                }
             }       
         }
 
@@ -40,7 +48,8 @@ namespace DziennikLekcyjny
         //**********************************************************************************
         {
             if (textBox1.Text == String.Empty || textBox2.Text == String.Empty ||
-                textBox3.Text == String.Empty || textBox4.Text == String.Empty)
+                textBox3.Text == String.Empty || textBox4.Text == String.Empty ||
+                textBox5.Text == String.Empty)
             {
                 MessageBox.Show("Nie podano wszystkich, wymaganych danych!", "Uwaga");
                 return false;
@@ -57,6 +66,18 @@ namespace DziennikLekcyjny
             }
 
             return true;
+        }
+
+        //**********************************************************************************
+        private Logger.PRACOWNIK GetPracownik()
+        //**********************************************************************************
+        {
+            if (radioButton1.Checked)
+                return Logger.PRACOWNIK.NAUCZYCIEL;
+            else if (radioButton2.Checked)
+                return Logger.PRACOWNIK.WYCHOWAWCA;
+            else
+                return Logger.PRACOWNIK.DYREKTOR;
         }
 
         //**********************************************************************************

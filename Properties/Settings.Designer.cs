@@ -58,5 +58,17 @@ namespace DziennikLekcyjny.Properties {
                 this["Uzytkownik"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("kamilpomyk_baza")]
+        public string NazwaBazy {
+            get {
+                return ((string)(this["NazwaBazy"]));
+            }
+            set {
+                this["NazwaBazy"] = value;
+            }
+        }
     }
 }

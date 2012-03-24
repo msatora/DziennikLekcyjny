@@ -1,45 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Linq;
 using System.Text;
-using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace DziennikLekcyjny
 {
     class Logger
     {
-        MySqlConnection m_Polaczenie;
-        MySqlConnectionStringBuilder m_DanePolaczenia;
+        public enum PRACOWNIK { NAUCZYCIEL, WYCHOWAWCA, DYREKTOR };
+        MySql.Data.MySqlClient.MySqlConnectionStringBuilder m_DanePolaczenia;
+        private DB m_DB;
+        
 
         //**********************************************************************************
-        public Logger(string serwer, string hasloDoBazy, string uzytkownik, uint port)
+        public Logger(string serwer, string nazwaBazy, string hasloDoBazy, string uzytkownik, uint port, PRACOWNIK pracownik)
         //**********************************************************************************
         {
-            m_DanePolaczenia = new MySqlConnectionStringBuilder();
+            m_DanePolaczenia = new MySql.Data.MySqlClient.MySqlConnectionStringBuilder();
 
             m_DanePolaczenia.Server   = serwer;
             m_DanePolaczenia.Password = hasloDoBazy;
             m_DanePolaczenia.UserID = uzytkownik;
             m_DanePolaczenia.Port  = port;
-        }
+            m_DanePolaczenia.Database = nazwaBazy;
 
-        //**********************************************************************************
-        ~Logger()
-        //**********************************************************************************
-        {
-            ZamknijPolaczenie();
+            m_DB = new DB();
         }
 
         //**********************************************************************************
         public bool Loguj()
         //**********************************************************************************
         {
-            ZamknijPolaczenie();
-
             try
             {
-                m_Polaczenie = new MySqlConnection(m_DanePolaczenia.ToString());
-                m_Polaczenie.Open();
+                m_DB.OtworzPolaczenie(m_DanePolaczenia.ToString());
             }
             catch (Exception)
             {
@@ -48,14 +44,5 @@ namespace DziennikLekcyjny
             
             return true;
         }
-
-        //**********************************************************************************
-        private void ZamknijPolaczenie()
-        //**********************************************************************************
-        {
-            if (m_Polaczenie != null)
-                m_Polaczenie.Close();
-        }
-
     }
 }

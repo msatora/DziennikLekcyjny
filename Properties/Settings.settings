@@ -11,5 +11,8 @@
     <Setting Name="Uzytkownik" Type="System.String" Scope="User">
       <Value Profile="(Default)">kamilpomyk_baza</Value>
     </Setting>
+    <Setting Name="NazwaBazy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">kamilpomyk_baza</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
